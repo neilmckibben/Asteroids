@@ -90,8 +90,8 @@ public:
 		player.dy = 0.0f;
 		player.angle = 0.0f;
 
-		bullets.clear()
-			asteroids.clear();
+		bullets.clear();
+		asteroids.clear();
 
 		asteroids.push_back({ (int)16, 20.0f, 20.0f, 8.0f, -6.0f, 0.0f });
 		asteroids.push_back({ (int)16, 100.0f, 20.0f, -5.0f, 3.0f, 0.0f });
@@ -127,7 +127,7 @@ public:
 	bool detect_player_collision()
 	{
 
-		for (auto asteroid& : asteroids)
+		for (auto &asteroid : asteroids)
 		{
 			return IsPointInsideSpaceObj(asteroid.x, asteroid.y, asteroid.size, player.x, player.y);
 		}
@@ -189,13 +189,13 @@ public:
 
 	// wills main part
 	void update_movement(float fElapsedTime) {
+
 		if (m_keys[VK_LEFT].bHeld) {// left key held
 			player.angle -= 6.0 * fElapsedTime;
 		}
 		if (m_keys[VK_RIGHT].bHeld) {// right key held
 			player.angle += 6.0 * fElapsedTime;
 		}
-
 		if (m_keys[VK_UP].bHeld) {// thrust
 			player.dx += sin(player.angle) * 20.0f * fElapsedTime;
 			player.dy += -cos(player.angle) * 20.0f * fElapsedTime;
@@ -298,4 +298,4 @@ public:
 
 	}
 
-}
+};
